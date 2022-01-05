@@ -49,3 +49,9 @@ the display / game board
 
 top half - house cards - 7 slots for card display
 bottom half - player cards - 7 slows for card display
+
+
+
+button and hand out cards
+produce something
+hit and stand
