@@ -11,14 +11,34 @@ console.log(deck)
 // console.log(newDeck)
 // let randNum = []
 
+
+
 // create Hand
 
 let playerHand = []
 let houseHand = []
 
+
+
+// grab html
+
 const pHand = document.getElementById('pHand')
+const pHands = document.getElementById('pHands')
+
 const hHand = document.getElementById('hHand')
+const hHands = document.getElementById('hHands')
+
+const sum1 = document.getElementById('sum1')
+const sum2 = document.getElementById('sum2')
+
+
+
 console.log(pHand)
+
+
+
+
+// create cards then push to deck
 
 for (let i=0; i < suits.length; i++){
     for(let j = 0; j < numbers.length; j++){
@@ -51,6 +71,7 @@ for (let i=0; i < suits.length; i++){
 
 
 
+//shuffle deck
 
 function shuffle(){
     for (let i =0; i < 1000; i++){
@@ -62,6 +83,10 @@ function shuffle(){
         deck[spot2] = cell 
     }
 }
+
+
+
+// start button
 
 const startButton = document.getElementById('start')
 console.log(startButton)
@@ -78,13 +103,17 @@ function startGame(evt){
     displayPSum()
     displayHSum()
 
-/* take a random card from the deck array, 
-splice - into a var
-add 2 cards to playerHand array and houseHand array
-then create space in html where card is shown
-*/
+        /* take a random card from the deck array, 
+        splice - into a var
+        add 2 cards to playerHand array and houseHand array
+        then create space in html where card is shown
+        */
 
 }
+
+
+
+// deal the hand
 
 function deal(){
     let pCard1 = deck.pop()
@@ -104,25 +133,30 @@ function deal(){
 }
 console.log(playerHand)
 
-// function createPHand(){
-//     let card1 = playerHand[0].number + ' ' + playerHand[0].suit
-//     console.log(card1)
-// }
+
+
+
+
+
+
+// display the cards
 
 function pCardDisplay(){
-    // for (let i=0; i< 8; i++){
-    pHand.innerText = playerHand[0].number + ' ' + playerHand[0].suit
-    pHand2.innerText = playerHand[1].number + ' ' + playerHand[1].suit
-    
-    
+    for (let i=0; i< playerHand.length; i++){
+        pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
+        
+    }
 }
 
 function hCardDisplay(){
-    hHand.innerText = houseHand[0].number + ' ' + houseHand[0].suit
-    hHand2.innerText = houseHand[1].number + ' ' + houseHand[1].suit
-
-
+    for (let i=0; i< houseHand.length; i++){
+        hHands.children[i].innerText = houseHand[i].number + ' ' + houseHand[i].suit
+        
+    }
 }
+
+
+// hit button
 
 const hitButton = document.getElementById('hit')
 console.log(hitButton)
@@ -131,9 +165,9 @@ hitButton.addEventListener('click', hitPlayer)
 
 function hitPlayer(evt){
     addCard()
-    pNewCardDisplay()
+    pCardDisplay()
+    displayPSum()
     
-
 }
 
 function addCard(){
@@ -142,15 +176,9 @@ function addCard(){
 
 }
 
-function pNewCardDisplay(){
-    pHand3.innerText = playerHand[2].number + ' ' + playerHand[2].suit
-    pHand4.innerText = playerHand[3].number + ' ' + playerHand[3].suit
-    pHand5.innerText = playerHand[4].number + ' ' + playerHand[4].suit
-    pHand6.innerText = playerHand[5].number + ' ' + playerHand[5].suit
-    pHand7.innerText = playerHand[6].number + ' ' + playerHand[6].suit
-    
-}
 
+
+// stand button
 
 const standButton = document.getElementById('stand')
 console.log(standButton)
@@ -158,48 +186,73 @@ console.log(standButton)
 standButton.addEventListener('click', houseTurn)
 
 function houseTurn(evt){
-    
     addHCard()
-    hNewCardDisplay()
+    hCardDisplay()
+    displayHSum()    
 
 }
 
 
 function addHCard(){
-    houseHand.push(deck.pop())
-    console.log(houseHand)
-
-}
-
-function hNewCardDisplay(){
-    hHand3.innerText = houseHand[2].number + ' ' + houseHand[2].suit
-    hHand4.innerText = houseHand[3].number + ' ' + houseHand[3].suit
-    hHand5.innerText = houseHand[4].number + ' ' + houseHand[4].suit
-    hHand6.innerText = houseHand[5].number + ' ' + houseHand[5].suit
-    hHand7.innerText = houseHand[6].number + ' ' + houseHand[6].suit
-   
+    for (let i=0; i < 7; i++){
+        if (displayHSum() < 17){
+            houseHand.push(deck.pop())
+            console.log(houseHand)
+        }
+    }
 }
 
 
-// add numbers 
-// need to give value to each card
+
+
+        /* add numbers 
+            need to give value to each card
+        */
+
+
+
+// add card value and display
 
 function displayPSum(){
-    let sum = 0
+    let playerSum = 0
     for (let i = 0; i < playerHand.length; i++){
-        sum += playerHand[i].value
-        console.log(sum)
+        playerSum += playerHand[i].value
+        console.log(playerSum)
         
     }
     
-    sum2.innerText = sum
+    pSum.innerText = playerSum
 
 }
 
+
+// if house hand is < 17, add card value and display
 
 function displayHSum(){
-    sum1.innerText = houseHand[0].value + houseHand[1].value
+    let houseSum = 0
+    for (let i = 0; i < houseHand.length; i++){
+        houseSum += houseHand[i].value
+        console.log(houseSum)
+        
+    }
+    
+    hSum.innerText = houseSum
+    return houseSum
+
 }
+
+// determine and display winner
+
+        /* 
+            if playerSum > 21 then display you lose
+            if playerSum > houseSum then display you win
+            if houseSum > 21 then display you win
+        */
+
+if (displayPSum() > displayHSum()){
+    document.getElementById('winner').innerText = 'You Win'
+}
+
 
 
 
