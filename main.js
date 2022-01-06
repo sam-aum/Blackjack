@@ -31,7 +31,8 @@ const hHands = document.getElementById('hHands')
 const sum1 = document.getElementById('sum1')
 const sum2 = document.getElementById('sum2')
 
-
+const pLife = document.getElementById('pLife')
+const hLife = document.getElementById('hLife')
 
 console.log(pHand)
 
@@ -97,9 +98,11 @@ function startGame(evt){
     shuffle()
     deal()
 
-    // createPHand()
+    //display cards
     pCardDisplay()
     hCardDisplay()
+
+    //display sum
     displayPSum()
     displayHSum()
 
@@ -120,6 +123,7 @@ function deal(){
     playerHand.push(pCard1)
     let pCard2 = deck.pop()
     playerHand.push(pCard2)
+
     let hCard1 = deck.pop()
     houseHand.push(hCard1)
     let hCard2 = deck.pop()
@@ -167,6 +171,8 @@ function hitPlayer(evt){
     addCard()
     pCardDisplay()
     displayPSum()
+    winnerHit()
+    hitDamage()
     
 }
 
@@ -178,7 +184,7 @@ function addCard(){
 
 
 
-// stand button
+// stay button
 
 const standButton = document.getElementById('stand')
 console.log(standButton)
@@ -189,6 +195,8 @@ function houseTurn(evt){
     addHCard()
     hCardDisplay()
     displayHSum()    
+    winnerStay()
+    damage()
 
 }
 
@@ -211,7 +219,7 @@ function addHCard(){
 
 
 
-// add card value and display
+// add sum of card values and display
 
 function displayPSum(){
     let playerSum = 0
@@ -222,6 +230,7 @@ function displayPSum(){
     }
     
     pSum.innerText = playerSum
+    return playerSum
 
 }
 
@@ -248,13 +257,85 @@ function displayHSum(){
             if playerSum > houseSum then display you win
             if houseSum > 21 then display you win
         */
+function winnerHit(){
+    if (displayPSum() > 21){
+        document.getElementById('winner').innerText = 'You Lose'
+        return 'playerBust'
+    }
+    
+}
 
-if (displayPSum() > displayHSum()){
-    document.getElementById('winner').innerText = 'You Win'
+function winnerStay(){
+    if (displayPSum() > displayHSum()){
+        const win = document.getElementById('winner').innerText = 'You Win'
+        return "higherValue"
+    }
+    else if (displayHSum() > 21){
+        const win = document.getElementById('winner').innerText = 'You Win'
+        return "houseBust"
+    }
+    else if (displayPSum() == displayHSum()){
+        document.getElementById('winner').innerText = 'Push'
+    }
+    else (
+        document.getElementById('winner').innerText = 'You Lose'
+        
+    )
 }
 
 
+// the betting / Life points
 
+    /*
+        house and player have life points
+        player has creatures 
+        house has creatures
+
+        loser takes dam
+        dam = difference 
+        21 - 18 = 3 loser takes 3 damage
+
+        if bust then busted player takes dam
+        bust dam = sum - 21
+
+        then maybe some "betting" before the game
+
+    */
+
+// create life points
+let playerLife = 20
+let houseLife = 20
+
+pLife.innerText = playerLife
+hLife.innerText = houseLife
+
+function damage(){
+ 
+    if (winnerStay() == 'higherValue' && winnerHit() !== 'playerBust'){
+        let damage = displayPSum() - displayHSum()
+        houseLife = houseLife - damage
+    }
+    if (winnerStay() == 'houseBust'){
+        let damage = displayHSum() - 21
+        houseLife = houseLife - damage
+    }
+    if (displayHSum() > displayPSum()){
+        let damage = displayHSum() - displayPSum()
+        playerLife = playerLife - damage
+    }
+    
+    hLife.innerText = houseLife
+    pLife.innerText = playerLife
+    
+}
+
+function hitDamage(){
+    if (winnerHit() == 'playerBust'){
+        let damage = displayPSum() - 21
+        playerLife = playerLife - damage 
+    }
+    pLife.innerText = playerLife
+}
 
 
 
