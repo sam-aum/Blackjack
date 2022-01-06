@@ -10,8 +10,10 @@ console.log(deck)
 // let newDeck = []
 // console.log(newDeck)
 // let randNum = []
-let playerHand = []
 
+// create Hand
+
+let playerHand = []
 let houseHand = []
 
 const pHand = document.getElementById('pHand')
@@ -21,15 +23,34 @@ console.log(pHand)
 for (let i=0; i < suits.length; i++){
     for(let j = 0; j < numbers.length; j++){
 
+        // let value = parseInt(numbers[j])
+        // if (numbers[j] == 'J' || numbers[j] == 'Q' || numbers[j] == 'K')
+        //     value = 10;
+        // if ()
+
+        let value = j + 2
+        if (numbers[j] == 'J' || numbers[j] == 'Q' || numbers[j] == 'K'){
+           value = 10;
+        }
+        if (numbers[j] == "A"){
+            value = 11
+        }
+
         let card = {
             number: numbers[j],
-            suit: suits[i]
+            suit: suits[i],
+            value: value
         }
+        console.log(card.value + card.value)
+
         
         deck.push(card)
         // deck.push(card.number + card.suit)
     }
 }
+
+
+
 
 function shuffle(){
     for (let i =0; i < 1000; i++){
@@ -54,6 +75,8 @@ function startGame(evt){
     // createPHand()
     pCardDisplay()
     hCardDisplay()
+    displayPSum()
+    displayHSum()
 
 /* take a random card from the deck array, 
 splice - into a var
@@ -109,6 +132,7 @@ hitButton.addEventListener('click', hitPlayer)
 function hitPlayer(evt){
     addCard()
     pNewCardDisplay()
+    
 
 }
 
@@ -124,6 +148,7 @@ function pNewCardDisplay(){
     pHand5.innerText = playerHand[4].number + ' ' + playerHand[4].suit
     pHand6.innerText = playerHand[5].number + ' ' + playerHand[5].suit
     pHand7.innerText = playerHand[6].number + ' ' + playerHand[6].suit
+    
 }
 
 
@@ -153,13 +178,28 @@ function hNewCardDisplay(){
     hHand6.innerText = houseHand[5].number + ' ' + houseHand[5].suit
     hHand7.innerText = houseHand[6].number + ' ' + houseHand[6].suit
    
+}
 
+
+// add numbers 
+// need to give value to each card
+
+function displayPSum(){
+    let sum = 0
+    for (let i = 0; i < playerHand.length; i++){
+        sum += playerHand[i].value
+        console.log(sum)
+        
+    }
+    
+    sum2.innerText = sum
 
 }
 
 
-
-
+function displayHSum(){
+    sum1.innerText = houseHand[0].value + houseHand[1].value
+}
 
 
 
@@ -217,3 +257,9 @@ function hNewCardDisplay(){
             
         
 //     }
+
+
+
+// img: `https://deckofcardsapi.com/static/img/  .png`
+
+// ${ranks[cardRank]} `
