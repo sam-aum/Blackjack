@@ -34,7 +34,7 @@ const sum2 = document.getElementById('sum2')
 const pLife = document.getElementById('pLife')
 const hLife = document.getElementById('hLife')
 
-
+const deckTotal = document.getElementById('deckTotal')
 
 console.log(pHand)
 
@@ -97,6 +97,7 @@ console.log(startButton)
 startButton.addEventListener('click', startGame)
 
 function startGame(evt){
+    
     shuffle()
     deal()
 
@@ -108,7 +109,8 @@ function startGame(evt){
     displayPSum()
     displayHSum()
 
-    
+    //display deck count
+    deckDisplay()
 
         /* take a random card from the deck array, 
         splice - into a var
@@ -140,6 +142,8 @@ function deal(){
     console.log(pCard2)
     console.log(hCard1)
     console.log(hCard2)
+
+    deckDisplay()
     
 }
 console.log(playerHand)
@@ -178,8 +182,10 @@ function hitPlayer(evt){
     addCard()
     pCardDisplay()
     displayPSum()
+    deckDisplay()
     winnerHit()
     hitDamage()
+    endGame()
     
 }
 
@@ -202,9 +208,10 @@ function houseTurn(evt){
     addHCard()
     hCardDisplay()
     displayHSum()    
+    deckDisplay()
     winnerStay()
     stayDamage()
-
+    endGame()
 }
 
 
@@ -320,15 +327,17 @@ hLife.innerText = houseLife
 //assign damage
 
 function stayDamage(){
- 
+    // win - if player has higher value 
     if (winnerStay() == 'higherValue' && winnerHit() !== 'playerBust'){
         let damage = displayPSum() - displayHSum()
         houseLife = houseLife - damage
     }
+    // win - if house busts 
     if (winnerStay() == 'houseBust'){
         let damage = displayHSum() - 21
         houseLife = houseLife - damage
     }
+    // lose - house has higher value
     if (displayHSum() > displayPSum() && winnerStay() !== 'houseBust'){
         let damage = displayHSum() - displayPSum()
         playerLife = playerLife - damage
@@ -363,28 +372,74 @@ dealButton.addEventListener('click', nextRound)
 
 function nextRound(evt){
     clearHand()
-    
+    clearBoard()
     deal()
     pCardDisplay()
     hCardDisplay()
+    displayPSum()
+    displayHSum()
 }
 
 
 let trash = []
 
-function clearHand(){
-    for (let i=0; i<= playerHand.length; i++){
-        trash.push(playerHand.pop())
-    }
-    console.log(playerHand)
-    console.log(trash)
 
-    for (let i=0; i<= houseHand.length; i++){
-        trash.push(houseHand.pop())
-    }
-    console.log(houseHand)
-    console.log(trash)
+function clearHand(){
+    playerHand.splice(0, playerHand.length)
+    console.log(playerHand)
+
+    houseHand.splice(0, houseHand.length)
 }
+
+function clearBoard(){
+    for (let i=0; i< 7; i++){
+        pHands.children[i].innerText = ''
+    }
+}
+
+
+// display the deck count
+
+function deckDisplay(){
+    deckTotal.innerText = deck.length
+}
+
+
+// end game
+
+function endGame(){
+    if (playerLife <= 0){
+        alert('You Lose')
+    }
+    if (houseLife <=0){
+        alert('You Win')
+    }
+}
+
+const cardDisplay = document.getElementById('cardDisplay')
+
+
+
+
+// function clearTest(){
+//     for (let i=0; i<= playerHand.length; i++){
+//         trash.push(playerHand.pop())
+//     }
+//     console.log(playerHand)
+//     console.log(trash)
+
+//     for (let i=0; i<= houseHand.length; i++){
+//         trash.push(houseHand.pop())
+//     }
+//     console.log(houseHand)
+//     console.log(trash)
+// }
+
+
+
+// function displayCardTest(){
+//     cardDisplay.innerContent = 
+// }
 
 
 
@@ -442,3 +497,5 @@ function clearHand(){
 // img: `https://deckofcardsapi.com/static/img/  .png`
 
 // ${ranks[cardRank]} `
+
+// let restart = location.reload()
