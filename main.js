@@ -34,6 +34,8 @@ const sum2 = document.getElementById('sum2')
 const pLife = document.getElementById('pLife')
 const hLife = document.getElementById('hLife')
 
+
+
 console.log(pHand)
 
 
@@ -106,6 +108,8 @@ function startGame(evt){
     displayPSum()
     displayHSum()
 
+    
+
         /* take a random card from the deck array, 
         splice - into a var
         add 2 cards to playerHand array and houseHand array
@@ -115,6 +119,9 @@ function startGame(evt){
 }
 
 
+function reload(){
+    return location.reload()
+}
 
 // deal the hand
 
@@ -322,10 +329,11 @@ function damage(){
     if (displayHSum() > displayPSum()){
         let damage = displayHSum() - displayPSum()
         playerLife = playerLife - damage
+        pLife.innerText = playerLife
     }
     
     hLife.innerText = houseLife
-    pLife.innerText = playerLife
+    
     
 }
 
@@ -354,7 +362,7 @@ function hitDamage(){
 //     // const randomCard = Math.floor(Math.random()*deck.length)
 
 //     // randNum.push(i)
-//     // console.log(randNum)
+//     // console.log(randNum)i
 
 //     // if (randNum.includes(randomCard)){
 
