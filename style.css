@@ -1,12 +1,88 @@
 
 
 body {
-    text-align: center;
-    
-
+    margin: 0 auto;
+    max-width: 1000px;
 }
-
 
 h1 {
     text-align: center;
+    margin: 25px;
 }
+
+h2 {
+    margin: 2px 0px 2px 0px;
+}
+
+.board{
+    border: 5px solid black;
+    height: 350px;
+    background-size: cover;
+    border-radius: 30px;    
+}
+
+#player{
+    margin: 10px 0px 15px 0px;
+}
+
+/* players info */
+#sectionInfo{
+    text-align: center;
+    float: left;
+    
+}
+
+#oInfo {
+    margin: 15px 10px 430px 25px;
+}
+
+#pInfo {
+    margin: 430px 10px 0px 25px;
+}
+
+.life{
+    text-align: center;
+    font-size: 40px;
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: rgb(192, 81, 81);
+    margin: 10px 10px;
+    padding: 20px;
+}
+
+
+/* sum */
+.sum {
+    margin: 15px 38% 0px 38%;
+    text-align: center;
+    font-size: 35px;
+    border: 1px solid black;
+    height: 50px;
+    padding: 8px 0px 0px 0px;
+}
+
+/* hand */
+.hands {
+    margin: 15px 25% 15px 25%;
+    text-align: center;
+    height: 245px;
+    
+    
+}
+
+#buttons {
+    text-align: center;
+}
+
+
+
+/* #pInfo{
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    left: 50%;
+    margin-left: -150px;
+
+    } */

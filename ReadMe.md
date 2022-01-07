@@ -55,3 +55,12 @@ bottom half - player cards - 7 slows for card display
 button and hand out cards
 produce something
 hit and stand
+
+
+
+more addons
+
+deal button
+get buttons to stop working when appropriate
+hide first house card
+Ace 1 and 11

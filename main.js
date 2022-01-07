@@ -203,7 +203,7 @@ function houseTurn(evt){
     hCardDisplay()
     displayHSum()    
     winnerStay()
-    damage()
+    stayDamage()
 
 }
 
@@ -316,7 +316,10 @@ let houseLife = 20
 pLife.innerText = playerLife
 hLife.innerText = houseLife
 
-function damage(){
+
+//assign damage
+
+function stayDamage(){
  
     if (winnerStay() == 'higherValue' && winnerHit() !== 'playerBust'){
         let damage = displayPSum() - displayHSum()
@@ -326,7 +329,7 @@ function damage(){
         let damage = displayHSum() - 21
         houseLife = houseLife - damage
     }
-    if (displayHSum() > displayPSum()){
+    if (displayHSum() > displayPSum() && winnerStay() !== 'houseBust'){
         let damage = displayHSum() - displayPSum()
         playerLife = playerLife - damage
         pLife.innerText = playerLife
@@ -346,8 +349,42 @@ function hitDamage(){
 }
 
 
+// deal button
+    /*
+        clear board
+            put all cards in the trash array
+        deal new cards
+    */
+
+const dealButton = document.getElementById('deal')
+console.log(dealButton)
+
+dealButton.addEventListener('click', nextRound)
+
+function nextRound(evt){
+    clearHand()
+    
+    deal()
+    pCardDisplay()
+    hCardDisplay()
+}
 
 
+let trash = []
+
+function clearHand(){
+    for (let i=0; i<= playerHand.length; i++){
+        trash.push(playerHand.pop())
+    }
+    console.log(playerHand)
+    console.log(trash)
+
+    for (let i=0; i<= houseHand.length; i++){
+        trash.push(houseHand.pop())
+    }
+    console.log(houseHand)
+    console.log(trash)
+}
 
 
 

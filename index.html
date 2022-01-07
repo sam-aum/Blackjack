@@ -10,15 +10,26 @@
 </head>
 <body>
     <h1>BlackJack Battle</h1>
-    <section>
-        <h2></h2> 
-        
-        <h3></h3>
-        <div id = hLife></div>
 
-        <h3></h3>
+    <section id = "sectionInfo">
+        <div class = 'info' id = 'oInfo'>
+            <h2 class = 'name'>Opponent</h2> 
         
-        <div id = 'hHands'>
+            <div class = 'life' id = hLife></div>
+        </div>
+
+        <div class = 'info' id = 'pInfo'>
+            <h2 class = 'name'>Player</h2>
+
+            <div class = 'life' id = pLife></div>
+                        
+        </div>
+    </section>
+
+
+    <section class = 'board' id = 'opponent'>     
+
+        <div class = 'hands' id = 'hHands'>
             <div id = 'hHand'></div>
             <div id = 'hHand2'></div>
             <div id = 'hHand3'></div>
@@ -29,17 +40,14 @@
         </div>
 
         <div class = "sum" id = 'hSum'></div>
-
-        
-
     </section>
 
-    <section>
-        <h2></h2>
 
+    <section class = 'board' id = 'player'>
+        
         <div class = "sum" id = 'pSum'></div>
 
-        <div id = 'pHands'>
+        <div class = 'hands' id = 'pHands'>
             <div id = 'pHand'></div>
             <div id = 'pHand2'></div>
             <div id = 'pHand3'></div>
@@ -47,36 +55,27 @@
             <div id = 'pHand5'></div>
             <div id = 'pHand6'></div>
             <div id = 'pHand7'></div>
-        </div>
+        </div>      
 
-        
-
-        <h3></h3>
-        <div id = pLife></div>
-              <h3></h3>
-
+       
     </section>
+
+    
 
     <section>
         <div id = 'winner'>
             <div></div>
 
         </div>
-
     </section>
 
-    <section>
-        <div>
+ 
 
-
-        </div>
-
-    </section>
-
-    <section>
+    <section id = 'buttons'>
         <button id='start'>Start</button>
         <button id='hit'>Hit</button>
         <button id='stand'>Stay</button>
+        <button id='deal'>Deal</button>
     </section>
 
 
