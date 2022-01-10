@@ -1,6 +1,7 @@
 Blackjack Battle
 https://sam-aum.github.io/Blackjack/
 
+![AS](https://user-images.githubusercontent.com/95770704/148798441-b7e5bf05-1eef-41f0-aadf-972cc456bd76.jpg)
 
 Blackjack + Magic the Gathering
 This game is Blackjack with Magic the Gathering mechanics in place of betting.
