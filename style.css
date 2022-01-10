@@ -38,11 +38,11 @@ h2 {
 }
 
 #oInfo {
-    margin: 15px 10px 430px 25px;
+    margin: 15px 10px 430px 20px;
 }
 
 #pInfo {
-    margin: 430px 10px 0px 25px;
+    margin: 430px 10px 0px 20px;
 }
 
 .life{
@@ -72,9 +72,9 @@ h2 {
 .hands {
     margin: 15px 25px 15px 135px;
     text-align: center;
-    height: 245px;
+    height: 205px;
     border: 1px solid black;
-    
+    padding: 35px 0px 0px 0px;
     /* height: 1200px; */
     
 }

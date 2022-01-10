@@ -162,7 +162,7 @@ function pCardDisplay(){
     for (let i=0; i< playerHand.length; i++){
         // this produces text
             pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
-        // // this produces card images
+        // this produces card images
         //     let img = new Image()    
         //     img.src = playerHand[i].image
         //     pHands.children[i].appendChild(img)        
@@ -458,12 +458,15 @@ function endGame(){
 
 // this code works to put image in div and browser
         const cardDisplay = document.getElementById('cardDisplay')
-        // let img = new Image()
-        let img = ''
-        img.src = '../cards/AS.svg';
+        let img = new Image()
+        let img2 = new Image()
+        // let img = ''
+        img.src = '../cards/AS.jpg';
+        img2.src = '../cards/KH.jpg';
         console.log(img)
 
-        cardDisplay.append(img)
+        pHand.append(img)
+        hHand.append(img2)
 
 
 

@@ -1,5 +1,10 @@
-Blackjack
+Blackjack Battle
+https://sam-aum.github.io/Blackjack/
 
+
+Blackjack + Magic the Gathering
+This game is Blackjack with Magic the Gathering mechanics in place of betting.
+The player wins when the opponent's life counter reaches below 0.
 
 
 build the Deck
@@ -74,7 +79,7 @@ work on css
 
     create card sum location
 
-    
+
 
 
 
