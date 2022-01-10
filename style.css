@@ -14,9 +14,14 @@ h2 {
     margin: 2px 0px 2px 0px;
 }
 
+/* li {
+    display:inline;
+} */
+
 .board{
     border: 5px solid black;
     height: 350px;
+    /* height: 1300px;  */
     background-size: cover;
     border-radius: 30px;    
 }
@@ -55,7 +60,7 @@ h2 {
 
 /* sum */
 .sum {
-    margin: 15px 38% 0px 38%;
+    margin: 15px 270px 0px 380px;
     text-align: center;
     font-size: 35px;
     border: 1px solid black;
@@ -65,17 +70,25 @@ h2 {
 
 /* hand */
 .hands {
-    margin: 15px 25% 15px 25%;
+    margin: 15px 25px 15px 135px;
     text-align: center;
     height: 245px;
+    border: 1px solid black;
     
+    /* height: 1200px; */
     
 }
 
 #buttons {
     text-align: center;
+    margin: 15px 290px 0px 400px;
 }
 
+
+#cardDisplay{
+    max-width: 10px;
+    height: auto;
+}
 
 
 /* #pInfo{

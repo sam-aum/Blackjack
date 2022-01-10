@@ -5,6 +5,7 @@ console.log('BlackJack')
 
 const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
 const numbers = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
 let deck = []
 console.log(deck)
 // let newDeck = []
@@ -62,7 +63,9 @@ for (let i=0; i < suits.length; i++){
         let card = {
             number: numbers[j],
             suit: suits[i],
-            value: value
+            value: value,
+            image: '../cards/' + numbers[j] + suits[i] + '.svg',
+            
         }
         console.log(card.value + card.value)
 
@@ -121,9 +124,12 @@ function startGame(evt){
 }
 
 
+// reload function
+
 function reload(){
     return location.reload()
 }
+
 
 // deal the hand
 
@@ -149,19 +155,44 @@ function deal(){
 console.log(playerHand)
 
 
-
-
-
-
-
 // display the cards
+// img.src = card.image
 
 function pCardDisplay(){
     for (let i=0; i< playerHand.length; i++){
-        pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
-        
+        // this produces text
+            pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
+        // // this produces card images
+        //     let img = new Image()    
+        //     img.src = playerHand[i].image
+        //     pHands.children[i].appendChild(img)        
+        //     console.log(img)
+       
     }
 }
+
+// function hitDisplay(){
+//     let j = 2
+//         for (let i=j; i< playerHand.length; i++){
+      
+//             let img = new Image()    
+//             img.src = playerHand[i].image
+//             pHands.children[i].appendChild(img)
+//             console.log(img)
+//             j = j + 1
+//             return j
+//         }
+    
+// }
+        // console.log(deck2)
+        // let asdf = deck2.pop()
+        // asdf = deck2.pop()
+        // img.src = asdf.image
+
+        // cardDisplay.append(img)
+        // console.log(img)
+
+
 
 function hCardDisplay(){
     for (let i=0; i< houseHand.length; i++){
@@ -263,6 +294,7 @@ function displayHSum(){
     return houseSum
 
 }
+
 
 // determine and display winner
 
@@ -381,8 +413,9 @@ function nextRound(evt){
 }
 
 
-let trash = []
+// clear the hand and board
 
+let trash = []
 
 function clearHand(){
     playerHand.splice(0, playerHand.length)
@@ -394,6 +427,7 @@ function clearHand(){
 function clearBoard(){
     for (let i=0; i< 7; i++){
         pHands.children[i].innerText = ''
+        hHands.children[i].innerText = ''
     }
 }
 
@@ -416,7 +450,65 @@ function endGame(){
     }
 }
 
-const cardDisplay = document.getElementById('cardDisplay')
+
+// get image
+
+
+
+
+// this code works to put image in div and browser
+        const cardDisplay = document.getElementById('cardDisplay')
+        // let img = new Image()
+        let img = ''
+        img.src = '../cards/AS.svg';
+        console.log(img)
+
+        cardDisplay.append(img)
+
+
+
+
+
+// test to see how to produce image through loop and object
+        // let deck2 = []
+
+        // for (let i=0; i < suits.length; i++){
+        //     for(let j = 0; j < numbers.length; j++){
+
+            
+        //         let card = {
+        //             image: '../cards/' + numbers[j] + suits[i] + '.svg',
+                    
+        //         }
+        //         deck2.push(card)          
+        //     }
+            
+        // }
+
+        // console.log(deck2)
+        // let asdf = deck2.pop()
+        // asdf = deck2.pop()
+        // img.src = asdf.image
+
+        // cardDisplay.append(img)
+        // console.log(img)
+
+
+
+
+
+
+
+
+
+
+
+
+// `https://deckofcardsapi.com/static/img/kh.png`
+// img.src = 'cards/AS.svg';
+
+// 'images/myFolder/' + i + '.png';
+
 
 
 
@@ -474,7 +566,6 @@ const cardDisplay = document.getElementById('cardDisplay')
 // function shuffle (){
    
 // }
-
 
 
 

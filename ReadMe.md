@@ -1,66 +1,92 @@
 Blackjack
 
 
+
+build the Deck
+
+create hand
+
+grab html
+
+create cards then push to deck
+
+shuffle deck
+
 start button
-reset button
 
-DECK
-need a deck of 52 cards
-    array of suits
-    array of numbers
-    array cards
-    put cards shuffled into a deck
+reload function
 
+deal the hand
 
-
-
-when played, takes cards from this array
-creates a random deck array with number and suit in each index
-
-
-passes out cards
-    round 1 - pass random card to player, then card to house
-    round 2 - pass 2nd card to player, then card to house
-
-hide house's 1st card
-show player's cards
+display the cards
 
 hit button
+
 stay button
 
-if hit button then add another card to player
-if stay then goes to house's turn
+add sum of card values and display
 
-need timer to add cards
+if house hand is < 17, add card value and display
 
-if player's cards greater than 21 then house wins.
+determine and display winner
+    if player's cards greater than 21 then house wins.
 
-
-house hits if under 17
-if house cards greater than 21 then player wins.
-
-if player's cards are > house cards, then player wins
-if tie then tie
-if player's cards are < house cards, then house wins
+    if player's cards are > house cards, then player wins
+    if tie then tie
+    if player's cards are < house cards, then house wins
 
 
 
-the display / game board
+the betting / Life points
 
-top half - house cards - 7 slots for card display
-bottom half - player cards - 7 slows for card display
+        house and player have life points
+        player has cards with attack value
+        house has cards with attack value
 
+        loser takes dam
+        dam = difference 
+        21 - 18 = 3 loser takes 3 damage
 
+        if bust then busted player takes dam
+        bust dam = sum - 21
 
-button and hand out cards
-produce something
-hit and stand
+        then maybe some "betting" before the game
+
+create life points
+
+assign damage
+
+deal button
+
+clear the hand and board
+
+display the deck count
+
+end game
+
+work on css
+
+    two boards
+
+    create life points design
+
+    build hand location
+
+    create card sum location
+
+    
+
 
 
 
 more addons
-
-deal button
+get images through JS *
+Connects to cards *
+Proper card display location
+Find deck design
+find background images
 get buttons to stop working when appropriate
 hide first house card
 Ace 1 and 11
+timer on cards
+sound
