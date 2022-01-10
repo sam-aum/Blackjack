@@ -3,7 +3,7 @@
 body {
     margin: 0 auto;
     max-width: 1000px;
-    background-color:rgb(146, 185, 230)
+    /* background-color:rgb(146, 185, 230) */
 }
 
 h1 {
@@ -81,6 +81,8 @@ h2 {
     height: 205px;
     border: 1px solid black;
     padding: 35px 0px 0px 0px;
+    /* color: white; */
+    font-size: 22px;
     /* height: 1200px; */
     
 }
