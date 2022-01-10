@@ -3,6 +3,7 @@
 body {
     margin: 0 auto;
     max-width: 1000px;
+    background-color:rgb(146, 185, 230)
 }
 
 h1 {
@@ -24,6 +25,9 @@ h2 {
     /* height: 1300px;  */
     background-size: cover;
     border-radius: 30px;    
+    background: url('https://agfundernews.com/wp-content/uploads/2021/10/iStock-1300845179.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 #player{
@@ -39,10 +43,12 @@ h2 {
 
 #oInfo {
     margin: 15px 10px 430px 20px;
+    color: white;
 }
 
 #pInfo {
     margin: 430px 10px 0px 20px;
+    color: white;
 }
 
 .life{
