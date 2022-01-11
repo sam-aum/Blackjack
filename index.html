@@ -28,9 +28,25 @@
     </section>
 
 
+    <section>
+    <div id = 'houseDamage'></div>
+    <div id = 'playerDamage'></div>
+    </section>
+
+
     <section class = 'board' id = 'opponent'>     
 
-        <div class = 'hands' id = 'hHands'>
+        <ul class = 'hands' id = 'hHands'>
+            <li id = 'hHand'></li>
+            <li id = 'hHand2'></li>
+            <li id = 'hHand3'></li>
+            <li id = 'hHand4'></li>
+            <li id = 'hHand5'></li>
+            <li id = 'hHand6'></li>
+            <li id = 'hHand7'></li>
+        </ul>   
+
+        <!-- <div class = 'hands' id = 'hHands'>
             <div id = 'hHand'></div>
             <div id = 'hHand2'></div>
             <div id = 'hHand3'></div>
@@ -38,17 +54,19 @@
             <div id = 'hHand5'></div>
             <div id = 'hHand6'></div>
             <div id = 'hHand7'></div>
-        </div>
-
+        </div> -->
+        
         <div class = "sum" id = 'hSum'></div>
     </section>
 
 
     <section class = 'board' id = 'player'>
-        
-        <div class = "sum" id = 'pSum'></div>
 
-        <!-- <ul class = 'hands' id = 'pHands'>
+        
+
+        <div class = "sum" id = 'pSum'></div>
+        
+        <ul class = 'hands' id = 'pHands'>
             <li id = 'pHand'></li>
             <li id = 'pHand2'></li>
             <li id = 'pHand3'></li>
@@ -56,9 +74,9 @@
             <li id = 'pHand5'></li>
             <li id = 'pHand6'></li>
             <li id = 'pHand7'></li>
-        </ul>       -->
+        </ul>      
         
-        <div class = 'hands' id = 'pHands'>
+        <!-- <div class = 'hands' id = 'pHands'>
             <div id = 'pHand'></div>
             <div id = 'pHand2'></div>
             <div id = 'pHand3'></div>
@@ -66,18 +84,12 @@
             <div id = 'pHand5'></div>
             <div id = 'pHand6'></div>
             <div id = 'pHand7'></div>
-        </div>      
+        </div>       -->
        
     </section>
 
     
 
-    <section>
-        <div id = 'winner'>
-            <div></div>
-
-        </div>
-    </section>
 
  
 
@@ -86,6 +98,7 @@
         <button id='hit'>Hit</button>
         <button id='stand'>Stay</button>
         <button id='deal'>Deal</button>
+      
     </section>
 
 
@@ -93,10 +106,15 @@
         <div id = 'deckTotal'>Deck count</div>
     </section>
 
-    <div id="cardDisplay">
+    <!-- <div id="cardDisplay"> -->
         <!-- <img class='card' src='cards/AS.svg'> -->
     
-    </div>
+    <!-- </div> -->
 
+    <section>
+        <div id = 'winner'>
+            Outcome
+        </div>
+    </section> 
 </body>
 </html>

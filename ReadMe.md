@@ -2,9 +2,23 @@ Blackjack Battle
 https://sam-aum.github.io/Blackjack/
 
 
+Game Intro
 Blackjack + Magic the Gathering
 This game is Blackjack with Magic the Gathering mechanics in place of betting.
 The player wins when the opponent's life counter reaches below 0.
+
+Game Play
+
+Technology Used
+
+MVP
+
+Future Updates
+
+Screenshots
+
+
+
 
 
 build the Deck
@@ -85,13 +99,32 @@ work on css
 
 
 more addons
+
 get images through JS *
-Connects to cards *
-Proper card display location
-Find deck design
-find background images
-get buttons to stop working when appropriate
+
+connects to cards *
+
+proper card display location *
+
+find deck design *
+
+find background images *
+
+get buttons to stop working when appropriate *
+
+reset game *
+
 hide first house card
+
+damage animation 
+
 Ace 1 and 11
+
 timer on cards
+
 sound
+
+create deck and theme option
+
+add made by: Sam Aum
+Check out my other work

@@ -3,16 +3,11 @@ console.log('BlackJack')
 
 // build the Deck
 
-const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
+const suits = ['S', 'C', 'D', 'H']
 const numbers = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
 let deck = []
 console.log(deck)
-// let newDeck = []
-// console.log(newDeck)
-// let randNum = []
-
-
 
 // create Hand
 
@@ -37,6 +32,8 @@ const hLife = document.getElementById('hLife')
 
 const deckTotal = document.getElementById('deckTotal')
 
+const houseDamage = document.getElementById('houseDamage')
+const playerDamage = document.getElementById('playerDamage')
 console.log(pHand)
 
 
@@ -47,31 +44,31 @@ console.log(pHand)
 for (let i=0; i < suits.length; i++){
     for(let j = 0; j < numbers.length; j++){
 
-        // let value = parseInt(numbers[j])
-        // if (numbers[j] == 'J' || numbers[j] == 'Q' || numbers[j] == 'K')
-        //     value = 10;
-        // if ()
-
         let value = j + 2
         if (numbers[j] == 'J' || numbers[j] == 'Q' || numbers[j] == 'K'){
            value = 10;
         }
         if (numbers[j] == "A"){
-            value = 11
-        }
+                value = 11
+            
+            } 
+            // if (value = 1 && displayPSum <= 21){
+            //     value = 11
+            // }
+        
 
         let card = {
             number: numbers[j],
             suit: suits[i],
             value: value,
-            image: '../cards/' + numbers[j] + suits[i] + '.svg',
+            image: './cards/' + numbers[j] + suits[i] + '.svg',
             
         }
         console.log(card.value + card.value)
 
         
         deck.push(card)
-        // deck.push(card.number + card.suit)
+        
     }
 }
 
@@ -100,20 +97,38 @@ console.log(startButton)
 startButton.addEventListener('click', startGame)
 
 function startGame(evt){
-    
-    shuffle()
-    deal()
+    if (playerLife <= 0 || houseLife <= 0){
+        reload()
+        shuffle()
+        deal()
 
-    //display cards
-    pCardDisplay()
-    hCardDisplay()
+        //display cards
+        pCardDisplay()
+        hCardDisplay()
 
-    //display sum
-    displayPSum()
-    displayHSum()
+        //display sum
+        displayPSum()
+        displayHSum()
 
-    //display deck count
-    deckDisplay()
+        //display deck count
+        deckDisplay()
+
+    } else{
+        shuffle()
+        deal()
+
+        //display cards
+        pCardDisplay()
+        hCardDisplay()
+
+        //display sum
+        displayPSum()
+        displayHSum()
+
+        //display deck count
+        deckDisplay()
+        // checkAce()
+    }
 
         /* take a random card from the deck array, 
         splice - into a var
@@ -156,47 +171,31 @@ console.log(playerHand)
 
 
 // display the cards
-// img.src = card.image
 
 function pCardDisplay(){
     for (let i=0; i< playerHand.length; i++){
         // this produces text
-            pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
+            // pHands.children[i].innerText = playerHand[i].number + ' ' + playerHand[i].suit
         // this produces card images
-        //     let img = new Image()    
-        //     img.src = playerHand[i].image
-        //     pHands.children[i].appendChild(img)        
-        //     console.log(img)
+            let img = new Image() 
+            img.src = playerHand[i].image
+            img.style.width = 125 +'px'
+            console.log(img)
+            pHands.children[i].appendChild(img)        
+            
        
     }
 }
 
-// function hitDisplay(){
-//     let j = 2
-//         for (let i=j; i< playerHand.length; i++){
-      
-//             let img = new Image()    
-//             img.src = playerHand[i].image
-//             pHands.children[i].appendChild(img)
-//             console.log(img)
-//             j = j + 1
-//             return j
-//         }
-    
-// }
-        // console.log(deck2)
-        // let asdf = deck2.pop()
-        // asdf = deck2.pop()
-        // img.src = asdf.image
-
-        // cardDisplay.append(img)
-        // console.log(img)
-
-
 
 function hCardDisplay(){
     for (let i=0; i< houseHand.length; i++){
-        hHands.children[i].innerText = houseHand[i].number + ' ' + houseHand[i].suit
+        // hHands.children[i].innerText = houseHand[i].number + ' ' + houseHand[i].suit
+        let img = new Image() 
+        img.src = houseHand[i].image
+        img.style.width = 125 +'px'
+        console.log(img)
+        hHands.children[i].appendChild(img)     
         
     }
 }
@@ -211,8 +210,10 @@ hitButton.addEventListener('click', hitPlayer)
 
 function hitPlayer(evt){
     addCard()
+    clearBoard()
     pCardDisplay()
     displayPSum()
+    hCardDisplay()
     deckDisplay()
     winnerHit()
     hitDamage()
@@ -237,12 +238,17 @@ standButton.addEventListener('click', houseTurn)
 
 function houseTurn(evt){
     addHCard()
+    clearBoard()
+    pCardDisplay()
     hCardDisplay()
+    displayPSum()
     displayHSum()    
     deckDisplay()
     winnerStay()
     stayDamage()
     endGame()
+    hitButton.removeEventListener('click', hitPlayer)
+    dealButton.addEventListener('click', nextRound)
 }
 
 
@@ -254,8 +260,6 @@ function addHCard(){
         }
     }
 }
-
-
 
 
         /* add numbers 
@@ -303,13 +307,17 @@ function displayHSum(){
             if playerSum > houseSum then display you win
             if houseSum > 21 then display you win
         */
-function winnerHit(){
+function winnerHit(evt){
     if (displayPSum() > 21){
         document.getElementById('winner').innerText = 'You Lose'
+        hitButton.removeEventListener('click', hitPlayer)
+        standButton.removeEventListener('click', houseTurn)
+        dealButton.addEventListener('click', nextRound)
         return 'playerBust'
     }
     
 }
+
 
 function winnerStay(){
     if (displayPSum() > displayHSum()){
@@ -348,6 +356,7 @@ function winnerStay(){
 
     */
 
+
 // create life points
 let playerLife = 20
 let houseLife = 20
@@ -363,17 +372,20 @@ function stayDamage(){
     if (winnerStay() == 'higherValue' && winnerHit() !== 'playerBust'){
         let damage = displayPSum() - displayHSum()
         houseLife = houseLife - damage
+        hDamage(damage)
     }
     // win - if house busts 
     if (winnerStay() == 'houseBust'){
         let damage = displayHSum() - 21
         houseLife = houseLife - damage
+        hDamage(damage)
     }
     // lose - house has higher value
     if (displayHSum() > displayPSum() && winnerStay() !== 'houseBust'){
         let damage = displayHSum() - displayPSum()
         playerLife = playerLife - damage
         pLife.innerText = playerLife
+        pDamage(damage)
     }
     
     hLife.innerText = houseLife
@@ -385,6 +397,7 @@ function hitDamage(){
     if (winnerHit() == 'playerBust'){
         let damage = displayPSum() - 21
         playerLife = playerLife - damage 
+        pDamage(damage)
     }
     pLife.innerText = playerLife
 }
@@ -410,6 +423,9 @@ function nextRound(evt){
     hCardDisplay()
     displayPSum()
     displayHSum()
+    hitButton.addEventListener('click', hitPlayer)
+    standButton.addEventListener('click', houseTurn)
+    dealButton.removeEventListener('click', nextRound)
 }
 
 
@@ -450,23 +466,59 @@ function endGame(){
     }
 }
 
+function hDamage(dam){
+    houseDamage.innerText = "-" + dam
+    houseDamage.style.opacity = parseFloat(houseDamage.style.opacity) + 0.1;
+        if (houseDamage.style.opacity > 1.0){
+            houseDamage.style.opacity = 1.0;
+        } else {
+            setTimeout("fadeIn(\"" + houseDamage + "\")", 100);
+        }
 
-// get image
+
+
+
+}
+
+
+function pDamage(dam){
+    playerDamage.innerText = "-" + dam
+}
+
+
+// Ace 1 or 11
+
+// function checkAce(){
+//     for (let i = 0; i <playerHand.length; i++){
+//         if (playerHand[i] == (card.suit =='A')){
+//             alert('Hello')
+//         } 
+//     }               
+// }
+
+
+// function ace(){
+//     if (displayPSum > 21){
+//         card.value = 1
+//     }
+// }
+
+
 
 
 
 
 // this code works to put image in div and browser
-        const cardDisplay = document.getElementById('cardDisplay')
-        let img = new Image()
-        let img2 = new Image()
-        // let img = ''
-        img.src = '../cards/AS.jpg';
-        img2.src = '../cards/KH.jpg';
-        console.log(img)
+        // const cardDisplay = document.getElementById('cardDisplay')
+        // let img = new Image()
+        // let img2 = new Image()
+        // // let img = ''
+        // img.src = './cards/AS.jpg';
+        // img2.src = './cards/KH.jpg';
+        // console.log(img)
 
-        pHand.append(img)
-        hHand.append(img2)
+        // pHand.append(img)
+        // hHand.append(img2)
 
 
 

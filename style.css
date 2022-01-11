@@ -3,6 +3,9 @@
 body {
     margin: 0 auto;
     max-width: 1000px;
+    background: url('https://assets.newatlas.com/dims4/default/29141b5/2147483647/strip/true/crop/1999x1333+0+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F6b%2F6a%2F84eb9afc46078a4112e764af5953%2Fdepositphotos-24687075-l-2015.jpg');
+    background-size: cover;
+    background-position: center;
     /* background-color:rgb(146, 185, 230) */
 }
 
@@ -15,19 +18,16 @@ h2 {
     margin: 2px 0px 2px 0px;
 }
 
-/* li {
+li {
     display:inline;
-} */
+}
 
 .board{
     border: 5px solid black;
     height: 350px;
     /* height: 1300px;  */
-    background-size: cover;
     border-radius: 30px;    
-    background: url('https://agfundernews.com/wp-content/uploads/2021/10/iStock-1300845179.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color: rgb(243, 237, 232, 0.4);
 }
 
 #player{
@@ -59,37 +59,64 @@ h2 {
     width: 50px;
     border-radius: 50%;
     background: rgb(192, 81, 81);
-    margin: 10px 10px;
+    margin: 10px 0px 10px 10px;
     padding: 20px;
+}
+
+/* Damage */
+#houseDamage {
+    float: left;
+    font-size: 70px;
+    font-weight: bold;
+    margin: 70px 0px 430px -30px;
+    color: rgb(255, 251, 0);
+}
+
+
+#playerDamage {
+    float: left;
+    font-size: 70px;
+    font-weight: bold;
+    margin: 600px 0px 10px -30px;
+    color: rgb(255, 251, 0);
+}
+
+#winner {
+    float: left;
 }
 
 
 /* sum */
 .sum {
-    margin: 15px 270px 0px 380px;
+    margin: 15px 325px 0px 325px;
     text-align: center;
     font-size: 35px;
     border: 1px solid black;
     height: 50px;
     padding: 8px 0px 0px 0px;
+    background-color: rgb(243, 237, 232, 0.6)
 }
 
 /* hand */
 .hands {
-    margin: 15px 25px 15px 135px;
+    margin: 15px 25px 15px 25px;
     text-align: center;
     height: 205px;
-    border: 1px solid black;
-    padding: 35px 0px 0px 0px;
+    /* border: 1px solid black; */
+    padding: 35px 110px 0px 0px;
     /* color: white; */
     font-size: 22px;
     /* height: 1200px; */
     
 }
 
+
+
+
+
 #buttons {
     text-align: center;
-    margin: 15px 290px 0px 400px;
+    margin: 15px 325px 0px 325px;
 }
 
 
@@ -97,6 +124,8 @@ h2 {
     max-width: 10px;
     height: auto;
 }
+
+
 
 
 /* #pInfo{
