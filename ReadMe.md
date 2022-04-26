@@ -22,20 +22,18 @@ The player wins when the opponent's life counter reaches below 0.
     - if tie then tie
     - if player's cards are < house cards, then house wins
 
-the betting / Life points
+5. the betting / Life points
 
-        house and player have life points
-        player has cards with attack value
-        house has cards with attack value
+    - house and player have life points
+    - player has cards with attack value
+    - house has cards with attack value
 
-        loser takes dam
-        dam = difference 
-        21 - 18 = 3 loser takes 3 damage
+    - loser takes damage
+    - damage = difference of the sum of each players hand
+        - ex. 21 - 18 = 3 loser takes 3 damage
 
-        if bust then busted player takes dam
-        bust dam = sum - 21
-
-        then maybe some "betting" before the game
+    - if bust then busted player takes damage
+        - bust damage = sum - 21
 
 ## MVP
 - Build the Deck
