@@ -71,9 +71,5 @@ The player wins when the opponent's life counter reaches below 0.
 - JavaScript
 
 ## Screenshots
+![Screenshot 2022-04-26 140639](https://user-images.githubusercontent.com/95770704/165374174-44d873ea-cf29-42f4-a932-b1f2ce8124c1.png)
 
-
-
-
-add made by: Sam Aum
-Check out my other work
