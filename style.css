@@ -127,7 +127,13 @@ li {
 
 
 
+#deckTotal{
+    color: white;
+}
 
+#winner{
+    color: white;
+}
 
 #buttons {
     text-align: center;
