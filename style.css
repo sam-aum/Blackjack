@@ -1,17 +1,19 @@
-
-
 body {
     margin: 0 auto;
     max-width: 1000px;
-    background: url('https://assets.newatlas.com/dims4/default/29141b5/2147483647/strip/true/crop/1999x1333+0+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F6b%2F6a%2F84eb9afc46078a4112e764af5953%2Fdepositphotos-24687075-l-2015.jpg');
+    background: url('https://wallpapermemory.com/uploads/247/magic-the-gathering-mtg-background-hd-1280x768-455713.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     /* background-color:rgb(146, 185, 230) */
 }
 
 h1 {
     text-align: center;
+    font-size: 50px;
     margin: 25px;
+    color: white;
 }
 
 h2 {
@@ -70,8 +72,14 @@ li {
     font-weight: bold;
     margin: 70px 0px 430px -30px;
     color: rgb(255, 251, 0);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    border: 1px solid black;
 }
 
+#houseDamage.fade {
+    opacity: 0;
+}
 
 #playerDamage {
     float: left;
@@ -79,6 +87,13 @@ li {
     font-weight: bold;
     margin: 600px 0px 10px -30px;
     color: rgb(255, 251, 0);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    border: 1px solid black;
+}
+
+#playerDamage.fade {
+    opacity: 0;
 }
 
 #winner {

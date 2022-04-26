@@ -112,6 +112,7 @@ function startGame(evt){
 
         //display deck count
         deckDisplay()
+        dealButton.removeEventListener('click', nextRound)
 
     } else{
         shuffle()
@@ -119,14 +120,15 @@ function startGame(evt){
 
         //display cards
         pCardDisplay()
-        hCardDisplay()
+        firstHDisplay()
 
         //display sum
         displayPSum()
-        displayHSum()
+        
 
         //display deck count
         deckDisplay()
+        dealButton.removeEventListener('click', nextRound)
         // checkAce()
     }
 
@@ -200,6 +202,16 @@ function hCardDisplay(){
     }
 }
 
+function firstHDisplay(){
+    let img = new Image();
+    img.src = './cards/back.jpg';
+    hHands.children[0].appendChild(img)
+
+    let img2 = new Image() 
+    img2.src = houseHand[1].image
+    img2.style.width = 125 +'px'
+    hHands.children[1].appendChild(img2)
+}
 
 // hit button
 
@@ -209,15 +221,17 @@ console.log(hitButton)
 hitButton.addEventListener('click', hitPlayer)
 
 function hitPlayer(evt){
+    dealButton.removeEventListener('click', nextRound)
     addCard()
     clearBoard()
     pCardDisplay()
     displayPSum()
-    hCardDisplay()
+    firstHDisplay()
     deckDisplay()
     winnerHit()
     hitDamage()
     endGame()
+    
     
 }
 
@@ -237,6 +251,8 @@ console.log(standButton)
 standButton.addEventListener('click', houseTurn)
 
 function houseTurn(evt){
+    hitButton.removeEventListener('click', hitPlayer)
+    standButton.removeEventListener('click', houseTurn)
     addHCard()
     clearBoard()
     pCardDisplay()
@@ -247,7 +263,6 @@ function houseTurn(evt){
     winnerStay()
     stayDamage()
     endGame()
-    hitButton.removeEventListener('click', hitPlayer)
     dealButton.addEventListener('click', nextRound)
 }
 
@@ -310,6 +325,11 @@ function displayHSum(){
 function winnerHit(evt){
     if (displayPSum() > 21){
         document.getElementById('winner').innerText = 'You Lose'
+        clearBoard()
+        hCardDisplay()
+        displayHSum()
+        pCardDisplay()
+        displayPSum()
         hitButton.removeEventListener('click', hitPlayer)
         standButton.removeEventListener('click', houseTurn)
         dealButton.addEventListener('click', nextRound)
@@ -418,18 +438,21 @@ dealButton.addEventListener('click', nextRound)
 function nextRound(evt){
     clearHand()
     clearBoard()
+    clearHSum()
     deal()
     pCardDisplay()
-    hCardDisplay()
+    firstHDisplay()
     displayPSum()
-    displayHSum()
+    
+    houseDamage.classList.add('fade')
+    playerDamage.classList.add('fade')
     hitButton.addEventListener('click', hitPlayer)
     standButton.addEventListener('click', houseTurn)
     dealButton.removeEventListener('click', nextRound)
 }
 
 
-// clear the hand and board
+// clear the hand and board and sum
 
 let trash = []
 
@@ -446,6 +469,11 @@ function clearBoard(){
         hHands.children[i].innerText = ''
     }
 }
+
+function clearHSum(){
+    hSum.innerText = ''
+}
+
 
 
 // display the deck count
@@ -466,23 +494,27 @@ function endGame(){
     }
 }
 
+
 function hDamage(dam){
-    houseDamage.innerText = "-" + dam
-    houseDamage.style.opacity = parseFloat(houseDamage.style.opacity) + 0.1;
-        if (houseDamage.style.opacity > 1.0){
-            houseDamage.style.opacity = 1.0;
-        } else {
-            setTimeout("fadeIn(\"" + houseDamage + "\")", 100);
-        }
-
-
-
+    houseDamage.classList.add('fade')
+    setTimeout(function(){
+        houseDamage.innerText = "-" + dam;
+        houseDamage.classList.remove('fade');
+        
+    }, 300)
+  
+    
 
 }
 
 
 function pDamage(dam){
-    playerDamage.innerText = "-" + dam
+    playerDamage.classList.add('fade')
+    setTimeout(function(){
+        playerDamage.innerText = "-" + dam;
+        playerDamage.classList.remove('fade');
+        
+    }, 300)
 }
 
 

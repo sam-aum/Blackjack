@@ -114,9 +114,9 @@ get buttons to stop working when appropriate *
 
 reset game *
 
-hide first house card
+hide first house card *
 
-damage animation 
+damage animation *
 
 Ace 1 and 11
 
