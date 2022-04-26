@@ -1,9 +1,12 @@
 Blackjack Battle
 https://sam-aum.github.io/Blackjack/
 
+![AS](https://user-images.githubusercontent.com/95770704/148798441-b7e5bf05-1eef-41f0-aadf-972cc456bd76.jpg)
+![back](https://user-images.githubusercontent.com/95770704/148799365-7b3f6627-94eb-4496-b888-ed4b830b5a63.jpg)
 
 Game Intro
 Blackjack + Magic the Gathering
+
 This game is Blackjack with Magic the Gathering mechanics in place of betting.
 The player wins when the opponent's life counter reaches below 0.
 
